@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "logs-sistemas": {
+      "hosting": {
+        "champions-fitness-front": [
+          "logs-sistemas"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "logs-sistemas"
+  }
+}
