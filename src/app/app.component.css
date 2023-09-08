@@ -1,0 +1,8 @@
+.cardRodape {
+  color: green;
+  background-color: #7986cb
+}
+
+body {
+  font-family: var(--font-family);
+}

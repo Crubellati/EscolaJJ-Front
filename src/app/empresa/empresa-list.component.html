@@ -1,0 +1,50 @@
+<app-top-bar></app-top-bar>
+
+<div class="mat-h2" style="padding-left: 25px">
+  Dados da Escola
+</div>
+
+<div style="padding: 25px">
+  <form [formGroup]="formFiltro">
+    <div class="formgrid grid">
+      <div class="field col-8 md:col-6">
+        <input placeholder="Buscar"
+               class="inputPadrao" pInputText id="buscar" formControlName="busca"/>
+      </div>
+      <div class="field col-4 md:col-6">
+        <p-button label="Buscar" icon="pi pi-search" (click)="listar()"
+                  styleClass="p-button-rounded"></p-button>
+      </div>
+      <div class="field col-12 md:col-12" style="text-align: right">
+        <p-button label="Adicionar" icon="pi pi-plus-circle" routerLink="/empresaForm"
+                  styleClass="p-button-rounded p-button-success"></p-button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngFor="let empresa of listaEmpresas">
+  <p-card header="{{ empresa.nome }}"
+          subheader="Responsável: {{ empresa.responsavel!=null? empresa.responsavel.nome: 'Não selecionado' }}"
+          [style]="{ margin: '20px' }">
+    <ng-template pTemplate="header">
+      <!--      <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />-->
+    </ng-template>
+    <p>
+      <label>Endereço: {{ empresa.endereco }}</label>
+      <br><label>Bairro: {{ empresa.bairro }}</label>
+      <br><label>Telefone: {{ empresa.telefone }}</label>
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button label="Editar" icon="pi pi-pencil"
+                routerLink="/empresaForm/{{empresa.codigo}}"
+                styleClass="p-button-rounded"></p-button>
+      <p-button label="Excluir" icon="pi pi-trash"
+                (click)="confirmacaoExcluir(empresa)"
+                styleClass="p-button-rounded p-button-danger"></p-button>
+    </ng-template>
+  </p-card>
+</div>
+
+<app-rodape-contador [qtd]="listaEmpresas.length"></app-rodape-contador>
+

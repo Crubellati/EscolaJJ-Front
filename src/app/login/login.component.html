@@ -1,0 +1,28 @@
+<div id="sect1">
+  <div class="login">
+    <h1>
+      Escola de Jiu-Jitsu
+    </h1>
+    <form [formGroup]="formulario">
+      <div class="">
+        <label htmlFor="login">Usuário</label><br/>
+        <input pInputText autocomplete="off"
+               class="inputTextPadrao" id="login" formControlName="login"/>
+      </div>
+      <br/>
+      <div class="">
+        <label htmlFor="senha">Senha</label><br/>
+        <input type="password" pInputText autocomplete="off"
+               class="inputTextPadrao" id="senha" formControlName="senha"/>
+      </div>
+      <br/>
+      <div style="font-size: small;color:red"
+           *ngIf="showUsuarioNotFound">
+        <p>Usuário não encontrado</p>
+      </div>
+      <p-button label="Entrar" icon="pi pi-sign-in"
+                (click)="entrar()"
+                styleClass="p-button-rounded"></p-button>
+    </form>
+  </div>
+</div>

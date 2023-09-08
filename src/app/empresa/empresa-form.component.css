@@ -1,0 +1,18 @@
+.formDefault {
+  padding: 25px
+}
+
+.inputTextPadrao {
+  width: 320px;
+  margin: 14px;
+}
+
+.btnSalvar {
+  margin: 20px;
+}
+
+.mensagem-errors {
+  font-size: small;
+  color: red;
+}
+.inputPadrao{width:100%;}

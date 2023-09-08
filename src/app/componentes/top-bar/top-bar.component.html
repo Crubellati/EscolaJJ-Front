@@ -1,0 +1,28 @@
+<p-card header="Escola de Jiu-Jitsu" [style]="{margin:'20px'}">
+  <h2>Sistema de gestão</h2>
+  <h3>Olá, {{nomeProfissional}}</h3>
+
+  <ng-template pTemplate="footer">
+    <p-button routerLink="/principal"
+              icon="pi pi-home"
+              styleClass="p-button-rounded p-button-secondary"></p-button>
+
+    <p-button label="Empresa" icon="pi pi-home" routerLink="/empresaList"
+              styleClass="p-button-rounded"></p-button>
+
+    <p-button label="Alunos" icon="pi pi-user" routerLink="/alunoList"
+              styleClass="p-button-rounded"></p-button>
+
+    <p-button (click)="deslogar()"
+              icon="pi pi-sign-out"
+              styleClass="p-button-rounded p-button-secondary"></p-button>
+
+  </ng-template>
+
+</p-card>
+
+<!--<p-button [disabled]="true" label="Success" icon="pi pi-check" styleClass="p-button-rounded p-button-success"></p-button>-->
+<!--<p-button label="Info" icon="pi pi-check" styleClass="p-button-rounded p-button-info"></p-button>-->
+<!--<p-button label="Warning" icon="pi pi-user" styleClass="p-button-rounded p-button-warning"></p-button>-->
+<!--<p-button label="Help" icon="pi pi-check" styleClass="p-button-rounded p-button-help"></p-button>-->
+<!--<p-button label="Danger" icon="pi pi-check" styleClass="p-button-rounded p-button-danger"></p-button>-->

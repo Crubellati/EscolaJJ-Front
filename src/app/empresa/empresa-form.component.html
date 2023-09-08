@@ -1,0 +1,92 @@
+<app-top-bar></app-top-bar>
+
+<div class="mat-h2" style="padding-left: 25px">
+  Dados da Empresa
+</div>
+
+<div class="formDefault">
+
+  <form [formGroup]="formulario">
+
+    <div class="formgrid grid">
+
+      <div class="field col-12 md:col-6">
+        <label for="codigo">Código</label>
+        <input class="inputPadrao" readonly="true" pInputText id="codigo" formControlName="codigo"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="nome">Nome</label>
+        <input class="inputPadrao"
+               autocomplete="off" pInputText id="nome" formControlName="nome"/>
+        <div class="mensagem-errors" *ngIf="formulario.get('nome')?.hasError('required') && formulario.get('nome')?.touched">
+          Favor preencher o nome
+        </div>
+        <div class="mensagem-errors"
+             *ngIf="formulario.get('nome')?.hasError('minlength') && formulario.get('nome')?.touched">
+          O nome precisa ter no mínimo 3 caracteres.
+        </div>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="endereco">Endereço</label>
+        <input class="inputPadrao"
+               autocomplete="off" pInputText id="endereco" formControlName="endereco"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="endereco">Cidade</label>
+        <input class="inputPadrao"
+               autocomplete="off" pInputText id="cidade" formControlName="cidade"/>
+        <div style="font-size: small;color:red"
+             *ngIf="formulario.get('cidade')?.hasError('required') && formulario.get('cidade')?.touched">
+          Favor preencher a cidade.
+        </div>
+        <div style="font-size: small;color:red"
+             *ngIf="formulario.get('cidade')?.hasError('minlength') && formulario.get('cidade')?.touched">
+          A cidade precisa ter no mínimo 3 caracteres.
+        </div>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label htmlFor="telefone">Telefone</label><br/>
+        <input class="inputPadrao" pInputText id="telefone" formControlName="telefone"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label htmlFor="bairro">Bairro</label><br/>
+        <input class="inputPadrao" pInputText id="bairro" formControlName="bairro"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label htmlFor="uf">UF</label><br/>
+        <input class="inputPadrao" pInputText id="uf" formControlName="uf"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label htmlFor="uf">Data de Início</label><br/>
+        <p-calendar dateFormat="dd/mm/yy" formControlName="data_inicio" [showIcon]="true"></p-calendar>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label htmlFor="uf">Responsável</label><br/>
+        <p-autoComplete styleClass="inputPadrao"
+                        formControlName="responsavel"
+                        [suggestions]="suggestions"
+                        [forceSelection]="true"
+                        field="nome"
+                        dataKey="codigo"
+                        (completeMethod)="search($event)"></p-autoComplete>
+      </div>
+
+      <p-button label="Salvar"
+                (click)="salvar()"
+                icon="pi pi-save"
+                styleClass="p-button-rounded"></p-button>
+
+    </div>
+
+    <br/>
+
+  </form>
+</div>

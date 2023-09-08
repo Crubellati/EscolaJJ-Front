@@ -1,0 +1,12 @@
+
+#sect1 {
+  height: 900px;
+  color: #fafafa;
+  background-image: url("../../assets/login-img-gym.PNG");
+  background-size: 100%;
+  background-size: cover;
+  padding: 50px;
+}
+.login{
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+<div *ngIf="qtd != 0, else templateRef">
+  <mat-card [ngClass]="'rodape'">
+    <mat-card-content>Total de registros na lista: {{ qtd }}</mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #templateRef>
+  <mat-card [ngClass]="'rodape'">
+    <mat-card-content>Nenhum registro na lista</mat-card-content>
+  </mat-card>
+</ng-template>

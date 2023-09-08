@@ -1,0 +1,61 @@
+<app-top-bar></app-top-bar>
+
+<div class="mat-h2" style="padding-left: 25px">
+  Lista de Alunos
+</div>
+
+
+<div style="padding: 25px">
+  <form [formGroup]="formFiltro">
+    <div class="formgrid grid">
+      <div class="field col-8 md:col-6">
+        <input placeholder="Buscar"
+               class="inputPadrao" pInputText id="buscar" formControlName="busca"/>
+      </div>
+      <div class="field col-4 md:col-6">
+        <p-button label="Buscar" icon="pi pi-search" (click)="listar()"
+                  styleClass="p-button-rounded"></p-button>
+      </div>
+      <div class="field col-12 md:col-12" style="text-align: right">
+        <p-button label="Adicionar" icon="pi pi-plus-circle" routerLink="/alunoForm"
+                  styleClass="p-button-rounded p-button-success"></p-button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div *ngFor="let aluno of listaAlunos">
+
+  <p-card header="{{  aluno.nome }}"
+          subheader="Código: {{ aluno.codigo }}"
+          [style]="{ margin: '20px' }">
+    <ng-template pTemplate="header">
+      <!--      <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />-->
+    </ng-template>
+    <img class="fotoAluno" src="{{aluno.foto}}">
+    <p>CPF: {{ aluno.cpf }}</p>
+    <p>Endereço: {{ aluno.endereco }}</p>
+    <p>Celular: {{ aluno.celular }}</p>
+    <div [ngSwitch]="aluno.status">
+      <label *ngSwitchCase="'ATIVO'" ngClass="labelAtivo">{{aluno.status}}</label>
+      <label *ngSwitchCase="'INATIVO'" ngClass="labelInativo">{{aluno.status}}</label>
+      <label *ngSwitchDefault>ATIVO</label>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Editar" icon="pi pi-pencil"
+                routerLink="/alunoForm/{{aluno.codigo}}"
+                styleClass="p-button-rounded"></p-button>
+      <p-button label="Excluir" icon="pi pi-trash"
+                (click)="confirmacaoExcluir(aluno)"
+                styleClass="p-button-rounded p-button-danger"></p-button>
+    </ng-template>
+  </p-card>
+
+</div>
+
+<app-rodape-contador [qtd]="listaAlunos.length"></app-rodape-contador>
+
+
+
+
