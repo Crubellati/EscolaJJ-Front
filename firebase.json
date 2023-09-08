@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "champions-fitness-front",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

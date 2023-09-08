@@ -1,0 +1,11 @@
+Para inserir uma rota com informação, adicione no app-routing.module.ts:
+  { path: 'alunoForm/:codigo', component: AlunoFormComponent },
+  dessa forma ao acessar: endereçoUrl/alunoForm/10 é possível pegar esse 10 com ActivateRoute
+-------------------
+Para pegar um elemento na url, adicione no contrutor do typescript:
+private route: ActivatedRoute
+e para pegar o valor use:
+    const codigo = this.route.snapshot.paramMap.get('codigo');
+-------------
+formulario.get('usuario')?.value
+o ponto de exclamação previne erro por nullpointer
