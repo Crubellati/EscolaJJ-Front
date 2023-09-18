@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Status} from "../interface/Status";
 import {MatriculaComponent} from "./matricula/matricula.component";
+import {Aluno} from "../interface/Aluno";
 
 @Component({
   selector: 'app-aluno-form',
@@ -30,22 +31,23 @@ export class AlunoFormComponent {
 
     this.formulario = this.formBuilder.group({
       codigo: [undefined],
-      nome: ['', Validators.compose(
+      nome: ["", Validators.compose(
         [Validators.required, Validators.minLength(3)]
       )],
-      cpf: ['',],
-      endereco: ['',],
-      celular: ['',],
+      cpf: ["",],
+      endereco: ["",],
+      celular: ["",],
       cidade: ['Lins',],
       status: ["ATIVO", Validators.required],
-
-      data_cadastro: new Date(), // Initialize with the current date and time
+      data_cadastro: new Date(),
       data_nasc: [null],
       celular2: [""],
       rg: [""],
       complemento: [""],
       bairro: [""],
-      uf: [""]
+      uf: [""],
+      nomeResponsavel: [""],
+      celResponsavel: [""]
     });
 
     //editando: o form serve para inserir e editar, se vir o codigo na URL então vamos editar
@@ -58,11 +60,9 @@ export class AlunoFormComponent {
   }
 
   salvar() {
-    const alunoForm = this.formulario;
-    const matriculaForm = this.matriculaComponent.matriculaFormGroup;
-
     if (this.formulario.valid) {
       if (this.formulario.get('codigo')?.value) {
+        console.log(this.formulario.value);
         this.service.editar(this.formulario.value).subscribe(() => {
           this.router.navigate(['/alunoList']);
         });
@@ -75,8 +75,19 @@ export class AlunoFormComponent {
   }
 
   buscarPorId(codigo: number) {
-    this.service.buscarPorId(codigo).subscribe((a) => {
-      this.formulario.patchValue(a);
+    this.service.buscarPorId(codigo).subscribe((result) => {
+      this.formulario.patchValue(result);
+      this.setDataFormatada(result.data_cadastro, 'data_cadastro');
+      this.setDataFormatada(result.data_nasc, 'data_nasc');
     });
+  }
+
+  private setDataFormatada(data: string, controlName: string) {
+    const partesData = data.split('-');
+    const ano = parseInt(partesData[0]);
+    const mes = parseInt(partesData[1]) - 1; // Subtrai 1 para ajustar o mês
+    const dia = parseInt(partesData[2]);
+    console.log(ano);
+    this.formulario.controls[controlName].setValue(new Date(ano, mes, dia));
   }
 }

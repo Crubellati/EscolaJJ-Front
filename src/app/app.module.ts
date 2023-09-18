@@ -31,6 +31,9 @@ import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import {CalendarModule} from "primeng/calendar";
 import {AutoCompleteModule} from "primeng/autocomplete";
+import {DropdownModule} from "primeng/dropdown";
+import {PanelModule} from "primeng/panel";
+import {DividerModule} from "primeng/divider";
 
 @NgModule({
   declarations: [
@@ -57,7 +60,7 @@ import {AutoCompleteModule} from "primeng/autocomplete";
     MatSelectModule, MatDividerModule, MatIconModule,
     MatDatepickerModule, MatNativeDateModule,
     MatAutocompleteModule,
-    ButtonModule, CardModule, InputTextModule, CalendarModule, AutoCompleteModule
+    ButtonModule, CardModule, InputTextModule, CalendarModule, AutoCompleteModule, DropdownModule, PanelModule, DividerModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'},

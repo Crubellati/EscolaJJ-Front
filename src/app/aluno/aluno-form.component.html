@@ -7,118 +7,129 @@
 <div class="formDefault">
 
   <form [formGroup]="formulario">
-    <mat-form-field class="inputTextPadrao"
-                    *ngIf="formulario.get('codigo')?.value!=undefined">
-      <mat-label>Código</mat-label>
-      <input matInput placeholder="" readonly="true" formControlName="codigo">
-    </mat-form-field>
-    <br *ngIf="formulario.get('codigo')?.value!=undefined">
 
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Nome</mat-label>
-      <input matInput placeholder="" formControlName="nome">
-    </mat-form-field>
-    <div style="font-size: small;color:red"
-         *ngIf="formulario.get('nome')?.hasError('required')
+    <div class="formgrid grid">
+
+      <div class="field col-6 md:col-6">
+        <label for="codigo">Código</label>
+        <input class="inputPadrao" readonly="true"
+               pInputText id="codigo"
+               formControlName="codigo"/>
+      </div>
+      <div class="field col-6 md:col-6">
+        <label htmlFor="status">Status</label><br/>
+        <p-dropdown id="status" [options]="statusCombo"
+                    formControlName="status"
+                    optionLabel="description" optionValue="value"></p-dropdown>
+
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="nome">Nome</label>
+        <input class="inputPadrao" placeholder="Nome completo (apelido entre parenteses)" pInputText id="nome" autocomplete="off"
+               formControlName="nome"/>
+
+        <div style="font-size: small;color:red"
+             *ngIf="formulario.get('nome')?.hasError('required')
                       && formulario.get('nome')?.touched">
-      Favor preencher o nome.
-    </div>
-    <div style="font-size: small;color:red"
-         *ngIf="formulario.get('nome')?.hasError('minlength')
+          Favor preencher o nome.
+        </div>
+
+        <div style="font-size: small;color:red"
+             *ngIf="formulario.get('nome')?.hasError('minlength')
                       && formulario.get('nome')?.touched">
-      O nome precisa ter no mínimo 3 caracteres.
+          O nome precisa ter no mínimo 3 caracteres.
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="field col-6 md:col-6">
+        <label for="celular">Celular</label>
+        <input class="inputPadrao" pInputText id="celular" formControlName="celular"/>
+      </div>
+
+      <div class="field col-6 md:col-6">
+        <label for="celular2">Celular 2</label>
+        <input class="inputPadrao" pInputText id="celular2" formControlName="celular2"/>
+      </div>
+      <div class="field col-12 md:col-6">
+        <label for="cpf">CPF</label>
+        <input class="inputPadrao" pInputText id="cpf" formControlName="cpf"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="rg">RG</label>
+        <input class="inputPadrao" pInputText id="rg" formControlName="rg"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label htmlFor="dn">Data de Nascimento</label><br/>
+        <p-calendar id="dn" dateFormat="dd/mm/yy" formControlName="data_nasc"
+                    [showIcon]="true"></p-calendar>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="endereco">Endereço</label>
+        <input class="inputPadrao"
+               placeholder="Rua/Avenida + número imóvel"
+               pInputText id="endereco"
+               formControlName="endereco"/>
+      </div>
+      <div class="field col-12 md:col-6">
+        <label for="cidade">Cidade</label>
+        <input class="inputPadrao"
+               pInputText id="cidade"
+               formControlName="cidade"/>
+        <div style="font-size: small;color:red"
+             *ngIf="formulario.get('cidade')?.hasError('required') && formulario.get('cidade')?.touched">
+          Favor preencher a cidade.
+        </div>
+        <div style="font-size: small;color:red"
+             *ngIf="formulario.get('cidade')?.hasError('minlength') && formulario.get('cidade')?.touched">
+          A cidade precisa ter no mínimo 3 caracteres.
+        </div>
+      </div>
+      <div class="field col-12 md:col-6">
+        <label for="complemento">Complemento</label>
+        <input class="inputPadrao" pInputText id="complemento" formControlName="complemento"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="bairro">Bairro</label>
+        <input class="inputPadrao" pInputText id="bairro" formControlName="bairro"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="uf">UF</label>
+        <input class="inputPadrao" pInputText id="uf" formControlName="uf"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="responsavel">Nome Responsável</label>
+        <input class="inputPadrao" pInputText id="responsavel" formControlName="nomeResponsavel"/>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <label for="cel_resp">Cel Responsável</label>
+        <input class="inputPadrao" pInputText id="cel_resp" formControlName="celResponsavel"/>
+      </div>
+
+      <div class="field col-6 md:col-6">
+        <label htmlFor="dc">Data de Cadastro</label><br/>
+        <p-calendar id="dc" dateFormat="dd/mm/yy" formControlName="data_cadastro"
+                    [showIcon]="true"></p-calendar>
+      </div>
+
     </div>
 
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Endereço</mat-label>
-      <input matInput placeholder="" formControlName="endereco">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Cidade</mat-label>
-      <input matInput placeholder="" formControlName="cidade">
-    </mat-form-field>
-    <div style="font-size: small;color:red"
-         *ngIf="formulario.get('cidade')?.hasError('required') && formulario.get('cidade')?.touched">
-      Favor preencher a cidade.
-    </div>
-    <div style="font-size: small;color:red"
-         *ngIf="formulario.get('cidade')?.hasError('minlength') && formulario.get('cidade')?.touched">
-      A cidade precisa ter no mínimo 3 caracteres.
-    </div>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Celular</mat-label>
-      <input matInput placeholder="" formControlName="celular">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Celular 2</mat-label>
-      <input matInput placeholder="" formControlName="celular2">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>CPF</mat-label>
-      <input matInput placeholder="" formControlName="cpf">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-        <mat-label>Data de Cadastro:</mat-label>
-        <input readonly="true" matInput [matDatepicker]="datepicker" formControlName="data_cadastro">
-        <mat-datepicker #datepicker></mat-datepicker>
-      </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>RG</mat-label>
-      <input matInput placeholder="" formControlName="rg">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Complemento</mat-label>
-      <input matInput placeholder="" formControlName="complemento">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Bairro</mat-label>
-      <input matInput placeholder="" formControlName="bairro">
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>UF</mat-label>
-      <input matInput placeholder="" formControlName="uf">
-    </mat-form-field>
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Data Nascimento</mat-label>
-      <input formControlName="data_nasc" required matInput type="date">
-
-    </mat-form-field>
-
-    <mat-form-field class="inputTextPadrao">
-      <mat-label>Status</mat-label>
-      <mat-select formControlName="status">
-        <mat-option *ngFor="let status of statusCombo" [value]="status.value">
-          {{status.description}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
+    <p-button label="Salvar"
+              [disabled]="!formulario.valid"
+              (click)="salvar()"
+              icon="pi pi-save"
+              styleClass="p-button-rounded"></p-button>
 
     <app-matricula [matriculaFormGroup]="formulario"></app-matricula>
-
-    <button class="btnSalvar" mat-fab extended color="primary"
-            [disabled]="!formulario.valid"
-            (click)="salvar()">
-      <mat-icon>save</mat-icon>
-      Salvar
-    </button>
-
-    <button class="btnSalvar" mat-fab extended color="primary"
-            [disabled]="!formulario.valid"
-            (click)="salvar()">
-      <mat-icon>undo</mat-icon>
-      Voltar
-    </button>
-
 
   </form>
 </div>

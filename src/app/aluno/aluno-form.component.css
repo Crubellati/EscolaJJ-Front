@@ -9,3 +9,11 @@
 .btnSalvar{
   margin: 20px;
 }
+
+.mensagem-errors {
+  font-size: small;
+  color: red;
+}
+.inputPadrao{width:100%;}
+
+

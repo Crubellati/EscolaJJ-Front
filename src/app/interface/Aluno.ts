@@ -9,4 +9,6 @@ export interface Aluno {
   status: string
   data_nasc: string
   data_cadastro: string
+  nomeResponsavel: string
+  celResponsavel: string
 }

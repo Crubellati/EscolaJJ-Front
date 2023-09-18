@@ -2,7 +2,8 @@
 #sect1 {
   height: 900px;
   color: #fafafa;
-  background-image: url("../../assets/login-img-gym.PNG");
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%,
+  rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   background-size: 100%;
   background-size: cover;
   padding: 50px;
@@ -10,3 +11,5 @@
 .login{
   text-align: center;
 }
+
+
