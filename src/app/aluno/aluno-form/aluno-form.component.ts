@@ -1,10 +1,9 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import {AlunoService} from "../service/aluno.service";
+import {AlunoService} from "../../service/aluno.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Status} from "../interface/Status";
-import {MatriculaComponent} from "./matricula/matricula.component";
-import {Aluno} from "../interface/Aluno";
+import {Status} from "../../interface/Status";
+import {Aluno} from "../../interface/Aluno";
 
 @Component({
   selector: 'app-aluno-form',
@@ -14,7 +13,6 @@ import {Aluno} from "../interface/Aluno";
 export class AlunoFormComponent {
 
   formulario!: FormGroup;
-  @ViewChild(MatriculaComponent) matriculaComponent!: MatriculaComponent;
 
   constructor(private service: AlunoService,
               private router: Router,
@@ -62,7 +60,6 @@ export class AlunoFormComponent {
   salvar() {
     if (this.formulario.valid) {
       if (this.formulario.get('codigo')?.value) {
-        console.log(this.formulario.value);
         this.service.editar(this.formulario.value).subscribe(() => {
           this.router.navigate(['/alunoList']);
         });
@@ -87,7 +84,6 @@ export class AlunoFormComponent {
     const ano = parseInt(partesData[0]);
     const mes = parseInt(partesData[1]) - 1; // Subtrai 1 para ajustar o mês
     const dia = parseInt(partesData[2]);
-    console.log(ano);
     this.formulario.controls[controlName].setValue(new Date(ano, mes, dia));
   }
 }

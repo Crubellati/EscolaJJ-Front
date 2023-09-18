@@ -4,10 +4,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PrincipalComponent} from './principal/principal.component';
-import {EmpresaListComponent} from './empresa/empresa-list.component';
-import {EmpresaFormComponent} from './empresa/empresa-form.component';
-import {AlunoListComponent} from './aluno/aluno-list.component';
-import {AlunoFormComponent} from './aluno/aluno-form.component';
+import {EmpresaListComponent} from './empresa/empresa-list/empresa-list.component';
+import {EmpresaFormComponent} from './empresa/empresa-form/empresa-form.component';
+import {AlunoListComponent} from './aluno/aluno-list/aluno-list.component';
+import {AlunoFormComponent} from './aluno/aluno-form/aluno-form.component';
 import {TopBarComponent} from './componentes/top-bar/top-bar.component';
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -24,7 +24,6 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {RodapeContadorComponent} from './componentes/rodape-contador/rodape-contador.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {MatriculaComponent} from './aluno/matricula/matricula.component';
 import {CommonModule} from "@angular/common";
 import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
@@ -34,6 +33,8 @@ import {AutoCompleteModule} from "primeng/autocomplete";
 import {DropdownModule} from "primeng/dropdown";
 import {PanelModule} from "primeng/panel";
 import {DividerModule} from "primeng/divider";
+import { MatriculaListComponent } from './aluno/matricula/matricula-list/matricula-list.component';
+import { MatriculaFormComponent } from './aluno/matricula/matricula-form/matricula-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {DividerModule} from "primeng/divider";
     LoginComponent,
     TopBarComponent,
     RodapeContadorComponent,
-    MatriculaComponent
+    MatriculaListComponent,
+    MatriculaFormComponent
   ],
   imports: [
     CommonModule,

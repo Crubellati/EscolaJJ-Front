@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Empresa} from "../interface/Empresa";
+import {Empresa} from "../../interface/Empresa";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Route, Router} from "@angular/router";
-import {EmpresaService} from "../service/empresa.service";
+import {EmpresaService} from "../../service/empresa.service";
 
 @Component({
   selector: 'app-empresa-list',

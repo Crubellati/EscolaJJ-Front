@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Status} from "../interface/Status";
-import {EmpresaService} from "../service/empresa.service";
+import {Status} from "../../interface/Status";
+import {EmpresaService} from "../../service/empresa.service";
 import {debounceTime} from 'rxjs/operators';
 import {Observable, startWith} from "rxjs";
-import {ProfissionalService} from "../service/profissional.service";
+import {ProfissionalService} from "../../service/profissional.service";
 import {map} from 'rxjs/operators';
-import {Profissional} from "../interface/Profissional";
+import {Profissional} from "../../interface/Profissional";
 import {AutoCompleteCompleteEvent} from "primeng/autocomplete";
 
 @Component({

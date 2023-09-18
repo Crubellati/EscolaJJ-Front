@@ -123,13 +123,41 @@
 
     </div>
 
-    <p-button label="Salvar"
-              [disabled]="!formulario.valid"
-              (click)="salvar()"
-              icon="pi pi-save"
-              styleClass="p-button-rounded"></p-button>
+   <div style="text-align:right">
+      <p-button label="Salvar"
+               [disabled]="!formulario.valid"
+               (click)="salvar()"
+               icon="pi pi-save"
+               styleClass="p-button-rounded"></p-button>
+   </div>
 
-    <app-matricula [matriculaFormGroup]="formulario"></app-matricula>
-
+    <div class="formgrid grid" style="text-align:center;margin-top:30px">
+      <div class="field col-6 md:col-6"
+           routerLink="/matriculaList/{{formulario.controls['codigo'].value}}"
+           style="cursor:pointer">
+        <p-card>
+          <i class="pi pi-file-edit" style="font-size:35px"></i>
+          <br/>
+          Matricula</p-card>
+      </div>
+      <div class="field col-6 md:col-6" style="cursor:pointer">
+        <p-card>
+          <i class="pi pi-money-bill" style="font-size:35px"></i>
+          <br/>
+          Mensalidade</p-card>
+      </div>
+      <div class="field col-6 md:col-6" style="cursor:pointer">
+        <p-card>
+          <i class="pi pi-gift" style="font-size:35px"></i>
+          <br/>
+          Produtos</p-card>
+      </div>
+      <div class="field col-6 md:col-6" style="cursor:pointer">
+        <p-card>
+          <i class="pi pi-file-edit" style="font-size:35px"></i>
+          <br/>
+          Graduação</p-card>
+      </div>
+    </div>
   </form>
 </div>

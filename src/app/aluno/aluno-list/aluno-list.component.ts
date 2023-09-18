@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {AlunoService} from "../service/aluno.service";
-import {Aluno} from "../interface/Aluno";
+import {AlunoService} from "../../service/aluno.service";
+import {Aluno} from "../../interface/Aluno";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 

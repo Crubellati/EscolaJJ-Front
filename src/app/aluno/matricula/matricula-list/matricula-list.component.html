@@ -1,0 +1,9 @@
+<app-top-bar></app-top-bar>
+
+<div class="mat-h2" style="padding-left: 25px">
+  Matriculas de {{codigoAluno}}
+</div>
+
+<div *ngFor="let matricula of listaMatriculas">
+  <p-card header="{{  matricula.codigo }}"></p-card>
+</div>
