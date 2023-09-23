@@ -24,7 +24,7 @@ Este é um projeto em desenvolvimento para a gestão de uma escola de jiu-jitsu.
 
 Para dúvidas ou sugestões, você pode entrar em contato com o autor do projeto:
 
-    Nome: Seu Nome
-    E-mail: seu.email@email.com
+    Nome: Ricardo Crubellati
+    E-mail: crubellati@gmail.com
 	
 	 
