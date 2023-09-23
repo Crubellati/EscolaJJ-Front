@@ -24,7 +24,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {RodapeContadorComponent} from './componentes/rodape-contador/rodape-contador.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {CommonModule} from "@angular/common";
+import {CommonModule, registerLocaleData} from "@angular/common";
 import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
@@ -35,6 +35,11 @@ import {PanelModule} from "primeng/panel";
 import {DividerModule} from "primeng/divider";
 import { MatriculaListComponent } from './aluno/matricula/matricula-list/matricula-list.component';
 import { MatriculaFormComponent } from './aluno/matricula/matricula-form/matricula-form.component';
+import localePt from '@angular/common/locales/pt';
+import {InputNumberModule} from "primeng/inputnumber";
+
+// Registre os dados de localização para Português
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -62,7 +67,8 @@ import { MatriculaFormComponent } from './aluno/matricula/matricula-form/matricu
     MatSelectModule, MatDividerModule, MatIconModule,
     MatDatepickerModule, MatNativeDateModule,
     MatAutocompleteModule,
-    ButtonModule, CardModule, InputTextModule, CalendarModule, AutoCompleteModule, DropdownModule, PanelModule, DividerModule
+    ButtonModule, CardModule, InputTextModule, CalendarModule, AutoCompleteModule,
+    DropdownModule, PanelModule, DividerModule, InputNumberModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'},

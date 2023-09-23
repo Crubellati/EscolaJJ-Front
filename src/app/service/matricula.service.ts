@@ -38,10 +38,13 @@ export class MatriculaService {
     return this.http.put<Aluno>(this.API, aluno, {headers: this.getDeafultHeader()});
   }
 
-  buscarPorId(codigo: number): Observable<Matricula[]> {
-    // Passando parametros nas requisições
-    // let params = new HttpParams().set("",codigo.toString());
+  buscarPorId(codigo: number): Observable<Matricula> {
     const url = this.API.concat("/").concat(codigo.toString());
+    return this.http.get<Matricula>(url, {headers: this.getDeafultHeader()});
+  }
+
+  buscarMatriculasPorAluno(codigo: number): Observable<Matricula[]> {
+    const url = this.API.concat("/buscarPorAluno/").concat(codigo.toString());
     return this.http.get<Matricula[]>(url, {headers: this.getDeafultHeader()});
   }
 

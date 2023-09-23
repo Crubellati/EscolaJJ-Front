@@ -14,15 +14,18 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'principal', component: PrincipalComponent},
+
   { path: 'alunoList', component: AlunoListComponent},
   { path: 'alunoForm/:codigo', component: AlunoFormComponent },
   { path: 'alunoForm', component: AlunoFormComponent },
+
   { path: 'empresaForm/:codigo', component: EmpresaFormComponent },
   { path: 'empresaForm', component: EmpresaFormComponent },
   { path: 'empresaList', component: EmpresaListComponent },
-  { path: 'matriculaList/:codigo', component: MatriculaListComponent },
-  { path: 'matriculaForm', component: MatriculaFormComponent }
-];
+
+  { path: 'matriculaList/:aluno', component: MatriculaListComponent },
+  { path: 'matriculaForm/new/:aluno', component: MatriculaFormComponent },
+  { path: 'matriculaForm/edit/:matricula', component: MatriculaFormComponent }];
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(routes)],

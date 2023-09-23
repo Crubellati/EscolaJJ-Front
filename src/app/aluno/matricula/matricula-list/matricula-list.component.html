@@ -1,9 +1,48 @@
 <app-top-bar></app-top-bar>
 
-<div class="mat-h2" style="padding-left: 25px">
-  Matriculas de {{codigoAluno}}
+<div style="padding: 25px">
+
+  <div class="formgrid grid">
+    <div class="field col-12 md:col-12" style="text-align: right">
+      <p-button label="Adicionar Matricula" icon="pi pi-plus-circle"
+                routerLink="/matriculaForm/new/{{ codigoAluno }}"
+                styleClass="p-button-rounded p-button-success"></p-button>
+    </div>
+  </div>
+
+  Matricula(s) de: <p>{{nomeAluno}}</p>
+
 </div>
 
 <div *ngFor="let matricula of listaMatriculas">
-  <p-card header="{{  matricula.codigo }}"></p-card>
+
+  <p-card header="Matrícula {{ matricula.codigo }}"
+          subheader="Observação: {{ matricula.observacao  }}"
+          [style]="{ margin: '0px 20px 20px 20px' }">
+    <ng-template pTemplate="header">
+<!--           <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />-->
+   </ng-template>
+
+    <p>Data Inicial: {{ matricula.dataInicio | date: 'dd/MM/yyyy' }}</p>
+    <p>Data Final: {{ matricula.dataFinal | date: 'dd/MM/yyyy' }}</p>
+    <p>Dia de Vencimento: {{ matricula.diaVencimento  }}</p>
+    <p>Valor da Mensalidade: {{ matricula.valorMensalidade  }}</p>
+
+    <ng-template pTemplate="footer">
+
+      <p-button label="Editar" icon="pi pi-pencil"
+                routerLink="/matriculaForm/edit/{{ matricula.codigo }}"
+                styleClass="p-button-rounded"></p-button>
+
+      <p-button label="Excluir" icon="pi pi-trash"
+                (click)="confirmacaoExcluir(matricula)"
+                styleClass="p-button-rounded p-button-danger"></p-button>
+
+    </ng-template>
+  </p-card>
+
 </div>
+
+<app-rodape-contador [qtd]="listaMatriculas.length"></app-rodape-contador>
+
+

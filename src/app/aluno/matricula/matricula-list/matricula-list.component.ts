@@ -14,26 +14,36 @@ import {Matricula} from "../../../interface/Matricula";
 export class MatriculaListComponent implements OnInit {
 
   listaMatriculas: Matricula[] = [];
-  codigoAluno?: string;
+  nomeAluno?: string;
+  codigoAluno?: number;
 
   constructor(private service: MatriculaService,
+              private alunoService: AlunoService,
               private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    //editando: o form serve para inserir e editar, se vir o codigo na URL então vamos editar
-    const codigo = this.route.snapshot.paramMap.get('codigo');
-    if (codigo) {
-      this.codigoAluno = codigo;
-      this.buscarPorId(Number(codigo));
-    }
-    //fim editando
+    this.populaLista();
   }
 
-  buscarPorId(codigo: number) {
-    this.service.buscarPorId(codigo).subscribe({
+  private populaLista() {
+    const aluno = this.route.snapshot.paramMap.get('aluno');
+    if (aluno) {
+      this.buscarAluno(Number(aluno));
+      this.buscarMatriculasPorAluno(Number(aluno));
+    }
+  }
+
+  buscarAluno(codigo: number) {
+    this.alunoService.buscarPorId(codigo).subscribe((aluno) => {
+      this.codigoAluno = aluno.codigo;
+      this.nomeAluno = aluno.nome;
+    });
+  }
+
+  buscarMatriculasPorAluno(codigo: number) {
+    this.service.buscarMatriculasPorAluno(codigo).subscribe({
       next: (result) => {
         this.listaMatriculas = result;
       },
@@ -47,6 +57,21 @@ export class MatriculaListComponent implements OnInit {
     if (erro.status === 401 || erro.status === 403) {
       alert("Sessão expirada. Por favor, faça o login novamente.")
       this.router.navigate(['/login'])
+    }
+  }
+
+  public confirmacaoExcluir(matricula: Matricula) {
+    if (matricula.codigo) {
+      if (confirm("Deseja realmente excluir?")) {
+        this.service.excluir(matricula.codigo).subscribe({
+          next: () => {
+            this.populaLista();
+          },
+          error: (erro) => {
+            alert("Não foi possivel excluir. Possíveis causas: Contém registros dependentes ou sessão expirada.")
+          }
+        });
+      }
     }
   }
 }

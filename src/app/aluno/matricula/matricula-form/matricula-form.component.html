@@ -1,1 +1,72 @@
-<p>matricula-form works!</p>
+<app-top-bar></app-top-bar>
+
+<div style="padding: 25px">
+
+  <p>Matrícula de:</p>
+  <p>{{ nomeAluno }}</p>
+  <br/>
+
+  <div class="formDefault">
+
+    <form [formGroup]="formulario">
+
+      <div class="formgrid grid">
+
+        <div class="field col-6 md:col-6">
+          <label for="codigo">Código</label><br/>
+          <input class="inputPadrao" readonly="true"
+                 pInputText id="codigo"
+                 formControlName="codigo"/>
+        </div>
+
+        <div class="field col-12 md:col-6">
+          <label htmlFor="dataInicio">Data Inicial</label><br/>
+          <p-calendar id="dataInicio" dateFormat="dd/mm/yy" formControlName="dataInicio"
+                      [showIcon]="true"></p-calendar>
+        </div>
+
+        <div class="field col-12 md:col-6">
+          <label htmlFor="dataFinal">Data Final</label><br/>
+          <p-calendar id="dataFinal" dateFormat="dd/mm/yy" formControlName="dataFinal"
+                      [showIcon]="true"></p-calendar>
+        </div>
+
+        <div class="field col-12 md:col-6">
+          <label for="diaVencimento">Dia de Venciamento</label>
+          <p-inputNumber formControlName="diaVencimento"
+                         mode="decimal" [showButtons]="true"
+                         id="diaVencimento"
+                         inputId="diaVencimento" [min]="1"
+                         [max]="31"></p-inputNumber>
+        </div>
+
+        <div class="field col-6 md:col-6">
+          <label for="valorMensalidade">Valor da Mensalidade</label>
+          <p-inputNumber formControlName="valorMensalidade"
+                         mode="currency" [showButtons]="true"
+                         currency="BRL" id="valorMensalidade"
+                         inputId="valorMensalidade" [min]="0"
+                         [max]="999"></p-inputNumber>
+        </div>
+
+        <div class="field col-12 md:col-12">
+          <label for="observacao">Observação</label><br/>
+          <input class="inputPadrao" placeholder=""
+                 pInputText id="observacao" autocomplete="off"
+                 formControlName="observacao"/>
+        </div>
+
+      </div>
+
+      <div style="text-align:right">
+
+        <p-button label="Salvar"
+                  [disabled]="!formulario.valid"
+                  (click)="salvar()"
+                  icon="pi pi-save"
+                  styleClass="p-button-rounded"></p-button>
+      </div>
+
+    </form>
+  </div>
+</div>
