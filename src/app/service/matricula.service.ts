@@ -14,28 +14,28 @@ export class MatriculaService {
   constructor(private http: HttpClient) {
   }
 
-  listar(filtroNome: string | null): Observable<Aluno[]> {
+  listar(filtro: string | null): Observable<Matricula[]> {
     const options = {
       headers: this.getDeafultHeader(),
       params: new HttpParams()
     };
     if (filtroNome) {
-      options.params = options.params.set('q', filtroNome);
+      options.params = options.params.set('q', filtro);
     }
-    return this.http.get<Aluno[]>(this.API.concat("/buscar"), options);
+    return this.http.get<Matricula[]>(this.API.concat("/buscar"), options);
   }
 
-  criar(aluno: Aluno): Observable<Aluno> {
-    return this.http.post<Aluno>(this.API, aluno, {headers: this.getDeafultHeader()});
+  criar(matricula: Matricula): Observable<Matricula> {
+    return this.http.post<Matricula>(this.API, matricula, {headers: this.getDeafultHeader()});
   }
 
-  excluir(id: number): Observable<Aluno> {
+  excluir(id: number): Observable<Matricula> {
     const url = this.API.concat("/").concat(id.toString());
-    return this.http.delete<Aluno>(url, {headers: this.getDeafultHeader()});
+    return this.http.delete<Matricula>(url, {headers: this.getDeafultHeader()});
   }
 
-  editar(aluno: Aluno): Observable<Aluno> {
-    return this.http.put<Aluno>(this.API, aluno, {headers: this.getDeafultHeader()});
+  editar(matricula: Matricula): Observable<Matricula> {
+    return this.http.put<Matricula>(this.API, matricula, {headers: this.getDeafultHeader()});
   }
 
   buscarPorId(codigo: number): Observable<Matricula> {

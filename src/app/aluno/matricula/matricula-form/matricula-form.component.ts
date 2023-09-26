@@ -59,7 +59,7 @@ export class MatriculaFormComponent {
     if (this.formulario.valid) {
       if (this.formulario.get('codigo')?.value) {
         this.service.editar(this.formulario.value).subscribe(() => {
-          this.router.navigate(['/alunoList']);
+          this.router.navigate(['/matriculaList']);
         });
       } else {
         this.service.criar(this.formulario.value).subscribe(() => {
